@@ -1,0 +1,49 @@
+﻿<Window x:Class="AP_Project.UserSignInPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP_Project"
+        mc:Ignorable="d" ResizeMode="NoResize" 
+        Title="UserSignInPage" Height="700" Width="450" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Background="Aqua"  BorderThickness="1" BorderBrush="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.18*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" >
+            <Button x:Name="xButton" Content="X" Foreground="Red" VerticalAlignment="Top" HorizontalAlignment="Right" Padding="3,0.5" Click="signinxButton_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="10,0">
+            <TextBlock Text="Phone number" Foreground="BlueViolet"/>
+            <TextBox x:Name="signInPhoneNumber" BorderBrush="Black" BorderThickness="1"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Margin="10,0">
+            <TextBlock Text="First Name" Foreground="BlueViolet"/>
+            <TextBox x:Name="signinFirstName" BorderThickness="1" BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" VerticalAlignment="Center" Margin="10,0">
+            <TextBlock Text="Last Name" Foreground="BlueViolet"/>
+            <TextBox x:Name="signinLastName" BorderThickness="1" BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" VerticalAlignment="Center" Margin="10,0">
+            <TextBlock Text="E-mail" Foreground="BlueViolet"/>
+            <TextBox x:Name="signinEmail" BorderBrush="Black" BorderThickness="1"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" VerticalAlignment="Center" Margin="10,0">
+            <TextBlock Text="New Password" Foreground="BlueViolet"/>
+            <PasswordBox x:Name="signinNewPassword" BorderBrush="Black" BorderThickness="1"/>
+            <TextBlock Text="Repeat New Password" Foreground="BlueViolet"/>
+            <PasswordBox x:Name="signinRepeatPassword" BorderBrush="Black" BorderThickness="1"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" VerticalAlignment="Center">
+            <Button x:Name="signinButton" Content="Sign in" VerticalAlignment="Center" Padding="0,10" Margin="10,0" Click="signinSignInButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
