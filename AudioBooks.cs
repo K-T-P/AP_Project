@@ -16,7 +16,7 @@ namespace AP_FinalProject_4002
         static public ObservableCollection<AudioBooks> AudioBooksList = new ObservableCollection<AudioBooks>();
         static private int ID_Generator = 0;
 
-        private int _ID { get; set; }
+        public int _ID { get; set; }
         public string Name { get; private set; }
         public string AuthorFirstName { get; private set; }
         public string AuthorLastName { get; private set; }
