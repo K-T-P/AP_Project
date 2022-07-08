@@ -34,7 +34,9 @@ namespace AP_FinalProject_4002
 
         private void UserSignUpBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UserSignUp_Win1 newSignUp = new UserSignUp_Win1();
+            newSignUp.Show();
+            this.Close();
         }
 
         private void AdminLoginBtn_Click(object sender, RoutedEventArgs e)

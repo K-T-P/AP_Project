@@ -61,7 +61,7 @@
                         FontWeight="Bold"
                         Foreground="White"
                         Margin="50, 10"
-                        BorderBrush="Transparent"
+                        BorderThickness="0"
                         Background="LightSeaGreen"
                         Click="UserLoginBtn_Click">
 
@@ -70,6 +70,9 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                </Button.Effect>
             </Button>
             <Button x:Name="UserSignUpBtn"
                         Grid.Row="2"
@@ -79,7 +82,7 @@
                         FontWeight="Bold"
                         Foreground="White"
                         Margin="50, 10"
-                        BorderBrush="Transparent"
+                        BorderThickness="0"
                         Background="LightSeaGreen"
                         Click="UserSignUpBtn_Click">
 
@@ -88,6 +91,10 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                </Button.Effect>
+
             </Button>
             <Button x:Name="AdminLoginBtn"
                         Grid.Row="3"

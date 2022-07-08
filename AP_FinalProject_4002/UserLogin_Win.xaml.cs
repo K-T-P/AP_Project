@@ -19,6 +19,7 @@ namespace AP_FinalProject_4002
     /// </summary>
     public partial class UserLogin_Win : Window
     {
+        public User user = new User("Farzan", "Mosayyebi", "farzanmosayyebi@gmail.com", "Farzan2000", "09146569637");
         public UserLogin_Win()
         {
             InitializeComponent();
@@ -31,7 +32,14 @@ namespace AP_FinalProject_4002
 
         private void UserLoginBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (User.LogIn_TrueEmailPasswordCheck(EmailTxtBx.Text, UserPassBx.Password.ToString()))
+            {
+                UserMain_Win newMain = new UserMain_Win(User.FindUser(EmailTxtBx.Text));
+                newMain.Show();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Invalid Username or Password");
         }
 
 
@@ -56,7 +64,9 @@ namespace AP_FinalProject_4002
 
         private void UserSignUpBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UserSignUp_Win1 newSignUp = new UserSignUp_Win1();
+            newSignUp.Show();
+            this.Close();
         }
     }
 }

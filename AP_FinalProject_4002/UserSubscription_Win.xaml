@@ -1,0 +1,116 @@
+﻿<Window x:Class="AP_FinalProject_4002.UserSubscription_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP_FinalProject_4002"
+        mc:Ignorable="d"
+        Title="UserSubscription_Win" Height="400" Width="300"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Border
+        Background="White"
+        CornerRadius="10"
+        BorderBrush="LightSeaGreen"
+        BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="2"
+                    x:Name="CloseBtn"
+                    Content="Close"
+                    Background="#ffa7e2df"
+                    Foreground="Gray"
+                    FontFamily="Arial Black"
+                    Margin="3"
+                    BorderBrush="Transparent" Click="CloseBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+            <Button
+                x:Name="FirstTypeTrialBtn"
+                Grid.Row="1"
+                Margin="20"
+                Background="#ffa7e2df"
+                BorderBrush="Transparent"
+                Content="Time - Price"
+                Foreground="Gray"
+                FontFamily="Arial Black">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                </Button.Effect>
+            </Button>
+
+            <Button
+                x:Name="SecondTypeTrialBtn"
+                Grid.Row="2"
+                Margin="20"
+                Background="#ffa7e2df"
+                BorderBrush="Transparent"
+                Content="Time - Price"
+                Foreground="Gray"
+                FontFamily="Arial Black">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                </Button.Effect>
+
+            </Button>
+            <Button
+                x:Name="ThirdTypeTrialBtn"
+                Grid.Row="3"
+                Margin="20"
+                Background="#ffa7e2df"
+                BorderBrush="Transparent"
+                Content="Time - Price"
+                Foreground="Gray"
+                FontFamily="Arial Black">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                </Button.Effect>
+
+            </Button>
+
+
+
+
+        </Grid>
+        
+    </Border>
+</Window>

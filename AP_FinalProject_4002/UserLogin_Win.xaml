@@ -78,24 +78,30 @@
                 <TextBlock Text="Email"
                         FontSize="18"
                         FontWeight="Bold" 
-                        Margin="10" 
-                        Foreground="White"
-                        />
-                <Border CornerRadius="2"
-                        BorderThickness="1.5"
-                        BorderBrush="LightSeaGreen"
-                        Margin="10, 0">
+                        Margin="10, 5" 
+                        Foreground="White"/>
 
-                    <TextBox x:Name="EmailTxtBx"
-                            FontWeight="Bold"
-                            FontSize="16"
-                            Text="Email"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Foreground="GhostWhite"
-                            Height="30"
-                            Opacity="0.5"/>
-                </Border>
+                <TextBox
+                    x:Name="EmailTxtBx"
+                    FontWeight="Bold"
+                    FontSize="16"
+                    Background="#303030"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 2"
+                    Foreground="GhostWhite"
+                    Height="40"
+                    Margin="15"
+                    VerticalContentAlignment="Center"
+                    Padding="5">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                    <TextBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </TextBox.Effect>
+                </TextBox>
 
             </StackPanel>
 
@@ -107,27 +113,58 @@
                         Margin="10" 
                         Foreground="White"/>
 
-                <Border CornerRadius="2"
-                        BorderThickness="1.5"
-                        BorderBrush="LightSeaGreen"
-                        Margin="10, 0">
+                <PasswordBox
+                    x:Name="UserPassBx"
+                    FontWeight="Bold"
+                    FontSize="16"
+                    Background="#303030"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 2"
+                    Foreground="GhostWhite"
+                    Height="40"
+                    Margin="15"
+                    VerticalContentAlignment="Center"
+                    Padding="5">
 
-                    <PasswordBox FontWeight="Bold"
-                            FontSize="16"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            Foreground="GhostWhite"
-                            Height="30"/>
-                </Border>
+                    <PasswordBox.Style>
+                        <Style TargetType="{x:Type PasswordBox}">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Style.Resources>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </PasswordBox.Style>
+                    <PasswordBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </PasswordBox.Effect>
+
+                </PasswordBox>
 
                 <CheckBox x:Name="RmmbrMeCheckBox"
-                          Margin="10"
-                          BorderBrush="Transparent"
+                          Margin="5"
+                          BorderBrush="LightSeaGreen"
+                          BorderThickness="0, 0, 1, 1"
                           Content="Remember Me"
                           Foreground="LightSeaGreen"
                           FontSize="12"
                           FontFamily="Gothic"
-                          Background="DimGray"/>
+                          Background="Transparent">
+                    <CheckBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </CheckBox.Resources>
+                </CheckBox>
 
                 <Button x:Name="ForgotMyPassBtn"
                         Background="Transparent"
@@ -157,8 +194,8 @@
                         FontFamily="Gothic"
                         FontWeight="Bold"
                         Foreground="White"
-                        Margin="10,15,10.4,14.8"
-                        BorderBrush="Transparent"
+                        Margin="10,15"
+                        BorderThickness="0"
                         Background="LightSeaGreen"
                         Click="UserLoginBtn_Click" Grid.ColumnSpan="2">
 
@@ -167,6 +204,10 @@
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+
                 </Button>
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.2,0.4,-0.4">

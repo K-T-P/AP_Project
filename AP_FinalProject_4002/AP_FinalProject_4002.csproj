@@ -55,13 +55,72 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin.cs" />
+    <Compile Include="AdminBookInfoReadWrite_Win.xaml.cs">
+      <DependentUpon>AdminBookInfoReadWrite_Win.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminLogin_Win.xaml.cs">
       <DependentUpon>AdminLogin_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMain_Win.xaml.cs">
+      <DependentUpon>AdminMain_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminTrialEdit_Win.xaml.cs">
+      <DependentUpon>AdminTrialEdit_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AudioBookPlayer.xaml.cs">
+      <DependentUpon>AudioBookPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AudioBooks.cs" />
+    <Compile Include="BookInfoReadOnly_Win.xaml.cs">
+      <DependentUpon>BookInfoReadOnly_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PDFBooks.cs" />
+    <Compile Include="UserChangePass_Win.xaml.cs">
+      <DependentUpon>UserChangePass_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo_Win.xaml.cs">
+      <DependentUpon>UserInfo_Win.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserLogin_Win.xaml.cs">
       <DependentUpon>UserLogin_Win.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserMain_Win.xaml.cs">
+      <DependentUpon>UserMain_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserPay_Win.xaml.cs">
+      <DependentUpon>UserPay_Win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserSignUp_Win1.xaml.cs">
+      <DependentUpon>UserSignUp_Win1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserSignUp_Win2.xaml.cs">
+      <DependentUpon>UserSignUp_Win2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserSubscription_Win.xaml.cs">
+      <DependentUpon>UserSubscription_Win.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AdminBookInfoReadWrite_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminLogin_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminMain_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminTrialEdit_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AudioBookPlayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BookInfoReadOnly_Win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -79,7 +138,35 @@
       <DependentUpon>StartUpWin.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserChangePass_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInfo_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserLogin_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserMain_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserPay_Win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserSignUp_Win1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserSignUp_Win2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserSubscription_Win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

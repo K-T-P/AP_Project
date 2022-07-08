@@ -1,0 +1,293 @@
+﻿<Window x:Class="AP_FinalProject_4002.AdminBookInfoReadWrite_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP_FinalProject_4002"
+        mc:Ignorable="d"
+        Title="AdminBookInfoReadWrite_Win" Height="500" Width="800"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        BorderBrush="Transparent"
+        AllowsTransparency="True">
+    <Border
+        Background="White"
+        CornerRadius="10"
+        BorderBrush="LightSeaGreen"
+        BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    x:Name="CloseBtn"
+                    Grid.Column="2"
+                    Content="Close"
+                    Background="#FFA7E2DF"
+                    BorderBrush="Transparent"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    FontWeight="Bold"
+                    Margin="5"
+                    Click="CloseBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Text="Book Name"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"/>
+
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button
+                        x:Name="BookCoverEditBtn"
+                        Grid.Row="1"
+                        Content="Change Cover"
+                        FontFamily="Arial Black"
+                        FontWeight="Bold"
+                        Foreground="DimGray"
+                        Background="#FFA7E2DF"
+                        Margin="5, 10"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        Click="BookCoverEditBtn_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect  ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0"
+                                VerticalAlignment="Center"
+                               LastChildFill="True">
+                        <TextBlock
+                            Text="Title"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Left"
+                            Margin="5, 0"
+                            Foreground="DimGray"
+                            FontWeight="Bold"
+                            FontFamily="Arial Black"/>
+                        <TextBox x:Name="BookTitleTxtBx"
+                                 Text=""
+                                 Foreground="Gray"
+                                 FontFamily="Arial Black"
+                                 Padding="5"
+                                 Margin="5,0"
+                                 BorderThickness="0, 0, 0, 1"
+                                 BorderBrush="LightSeaGreen"
+                                 Background="GhostWhite">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1"
+                                VerticalAlignment="Center"
+                                LastChildFill="True">
+                        <TextBlock
+                            Text="Author"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Left"
+                            Margin="5, 0"
+                            Foreground="DimGray"
+                            FontWeight="Bold"
+                            FontFamily="Arial Black"/>
+                        <TextBox x:Name="BookAuthorTxtBx"
+                                 Text=""
+                                 Foreground="Gray"
+                                 FontFamily="Arial Black"
+                                 Padding="5"
+                                 Margin="5,0"
+                                 BorderThickness="0, 0, 0, 1"
+                                 BorderBrush="LightSeaGreen"
+                                 Background="GhostWhite">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </DockPanel>
+                    <DockPanel
+                        Grid.Row="2"
+                        VerticalAlignment="Center"
+                        LastChildFill="True">
+                        <TextBlock
+                            Text="Price"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Left"
+                            Margin="5, 0"
+                            Foreground="DimGray"
+                            FontWeight="Bold"
+                            FontFamily="Arial Black"/>
+                        <TextBox x:Name="BookPriceTxtBx"
+                                 Text=""
+                                 Foreground="Gray"
+                                 FontFamily="Arial Black"
+                                 Padding="5"
+                                 Margin="5,0"
+                                 BorderThickness="0, 0, 0, 1"
+                                 BorderBrush="LightSeaGreen"
+                                 Background="GhostWhite">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </DockPanel>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                        Grid.Column="0"
+                        Text="About"
+                        Foreground="DimGray"
+                        FontWeight="Bold"
+                        FontFamily="Arial Black"
+                        Margin="5"/>
+
+                        <TextBox
+                            x:Name="BookAboutTxtBx"
+                            Grid.Column="1"
+                            Text=""
+                            Foreground="Gray"
+                            FontFamily="Arial Black"
+                            Padding="5"
+                            Margin="5"
+                            BorderThickness="0, 0, 0, 1"
+                            BorderBrush="LightSeaGreen"
+                            Background="GhostWhite"
+                            VerticalContentAlignment="Top"
+                            TextWrapping="Wrap"
+                            AcceptsReturn="True"
+                            VerticalScrollBarVisibility="Auto">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        LastChildFill="True">
+                            <TextBlock
+                            Text="Discount"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Left"
+                            Margin="5, 0"
+                            Foreground="DimGray"
+                            FontWeight="Bold"
+                            FontFamily="Arial Black"/>
+                            <TextBox x:Name="BookDiscountTxtBx"
+                                 Text=""
+                                 Foreground="Gray"
+                                 FontFamily="Arial Black"
+                                 Padding="5"
+                                 Margin="5,0"
+                                 BorderThickness="0, 0, 0, 1"
+                                 BorderBrush="LightSeaGreen"
+                                 Background="GhostWhite">
+                                <TextBox.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                        </DockPanel>
+
+                        <CheckBox
+                            x:Name="BookIsVIPChckBx"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="Included in VIP"
+                            Foreground="DimGray"
+                            FontFamily="Arial Black"
+                            FontWeight="Bold"
+                            BorderThickness="0, 0, 0, 1"
+                            BorderBrush="LightSeaGreen">
+                            <CheckBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                    <Setter Property="Background" Value="GhostWhite"/>
+                                </Style>
+                            </CheckBox.Resources>
+                        </CheckBox>
+
+                    </Grid>
+
+
+
+
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

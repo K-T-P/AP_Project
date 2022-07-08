@@ -1,0 +1,171 @@
+﻿<Window x:Class="AP_FinalProject_4002.BookInfoReadOnly_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP_FinalProject_4002"
+        mc:Ignorable="d"
+        Title="BookInfoReadOnly_Win" Height="600" Width="400"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        BorderBrush="Transparent"
+        AllowsTransparency="True">
+    <Border
+        Background="GhostWhite"
+        BorderBrush="LightSeaGreen"
+        BorderThickness="1"
+        CornerRadius="10">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Text="VIP!"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="Orchid"
+                    FontWeight="DemiBold"
+                    FontFamily="Showcard Gothic">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="10" Opacity="0.3"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <Button
+                    x:Name="CloseBtn"
+                    Grid.Column="2"
+                    Content="Close"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Background="#ffa7e2df"
+                    Foreground="Gray"
+                    FontFamily="Arial Black"
+                    FontWeight="Bold"
+                    Margin="5, 15"
+                    Click="CloseBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Text="Book Name"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"/>
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="1.2*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock
+                        Text="Author"
+                        HorizontalAlignment="Center"
+                        Foreground="DimGray"
+                        FontFamily="Arial Black"/>
+                    <TextBlock
+                        x:Name="BookAuthorNameTxtBx"
+                        Text="AuthorName"
+                        HorizontalAlignment="Center"
+                        FontFamily="Arial Bold"
+                        Foreground="Gray"
+                        Margin="5"/>
+                </StackPanel>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button
+                        Grid.Row="0"
+                        x:Name="BuyBookBtn"
+                        Content="Buy - Price"
+                        Background="#ffa7e2df"
+                        Foreground="Gray"
+                        FontFamily="Arial Black"
+                        Margin="10, 2"
+                        BorderBrush="Transparent"
+                        BorderThickness="0" Click="BuyBookBtn_Click">
+
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                            
+                        </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                        </Button.Effect>
+
+                    </Button>
+                    <Button
+                    x:Name="AddBookMarkBtn"
+                    Grid.Row="1"
+                    Content="Add To Bookmarks"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Background="#ffa7e2df"
+                    Foreground="Gray"
+                    FontFamily="Arial Black"
+                    FontWeight="Bold"
+                    Margin="40, 15">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                        </Button.Effect>
+                    </Button>
+
+                </Grid>
+
+                <StackPanel Grid.Row="3">
+                    <TextBlock
+                        Text="About"
+                        HorizontalAlignment="Center"
+                        Foreground="DimGray"
+                        FontFamily="Arial Black"/>
+                    <TextBlock
+                        Text="Some words about the book..."
+                        HorizontalAlignment="Center"
+                        Foreground="Gray"
+                        FontFamily="Arial Bold"
+                        Margin="5"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+    </Border>
+</Window>

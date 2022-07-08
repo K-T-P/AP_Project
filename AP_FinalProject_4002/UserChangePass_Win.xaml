@@ -1,0 +1,167 @@
+﻿<Window x:Class="AP_FinalProject_4002.UserChangePass_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP_FinalProject_4002"
+        mc:Ignorable="d"
+        Title="UserChangePass_Win" Height="300" Width="500"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Border
+        Background="White"
+        CornerRadius="10"
+        BorderBrush="LightSeaGreen"
+        BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="New Password"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    VerticalAlignment="Center"
+                    Margin="10"/>
+                <PasswordBox
+                    x:Name="UserNewPassBx"
+                    Grid.Row="1"
+                    Foreground="Gray"
+                    FontFamily="Arial Black"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 1"
+                    Margin="10"
+                    Padding="5">
+                    <PasswordBox.Style>
+                        <Style TargetType="{x:Type PasswordBox}">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Style.Resources>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </PasswordBox.Style>
+                    <PasswordBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </PasswordBox.Effect>
+                </PasswordBox>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="Repeat New Password"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    VerticalAlignment="Center"
+                    Margin="10"/>
+                <PasswordBox
+                    x:Name="UserRepeatNewPassBx"
+                    Grid.Row="1"
+                    Foreground="Gray"
+                    FontFamily="Arial Black"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 1"
+                    Margin="10"
+                    Padding="5">
+                    <PasswordBox.Style>
+                        <Style TargetType="{x:Type PasswordBox}">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Style.Resources>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </PasswordBox.Style>
+                    <PasswordBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </PasswordBox.Effect>
+                </PasswordBox>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button
+                    Grid.Column="0"
+                    x:Name="CancelBtn"
+                    Background="#f08080"
+                    Content="Cancel"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    Margin="20"
+                    BorderBrush="Transparent"
+                    Click="CancelBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+                <Button
+                    Grid.Column="1"
+                    x:Name="OKBtn"
+                    Background="LightSeaGreen"
+                    Content="Set as New Password"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    Margin="20"
+                    BorderBrush="Transparent"
+                    Click="OKBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+
+            </Grid>
+
+        </Grid>
+        
+    </Border>
+</Window>

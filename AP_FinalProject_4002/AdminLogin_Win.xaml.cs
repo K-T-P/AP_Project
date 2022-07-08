@@ -43,7 +43,15 @@ namespace AP_FinalProject_4002
 
         private void AdminLoginBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Admin.AdminEmailPasswordExistenceCheck(EmailTxtBx.Text, AdminPassBx.Password.ToString()))
+            {
+                AdminMain_Win newAdmin = new AdminMain_Win(Admin.FindAdmin(EmailTxtBx.Text));
+                newAdmin.Show();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Invalid Input!");
+            
         }
     }
 }

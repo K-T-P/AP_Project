@@ -1,0 +1,225 @@
+﻿<Window x:Class="AP_FinalProject_4002.UserPay_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP_FinalProject_4002"
+        mc:Ignorable="d"
+        Title="UserPay_Win" Height="600" Width="400"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Border
+        Background="White"
+        CornerRadius="10"
+        BorderBrush="LightSeaGreen"
+        BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="Card Number"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+                <TextBox
+                    x:Name="UserCardNmbrTxtBx"
+                    Grid.Row="1"
+                    Text="1234567889"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Foreground="Gray"
+                    FontFamily="Arial Bold"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 1"
+                    Margin="10">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                    <TextBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </TextBox.Effect>
+                </TextBox>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="CVV"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+                <TextBox
+                    x:Name="UserCardCVVTxtBx"
+                    Grid.Row="1"
+                    Text="1234567889"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Foreground="Gray"
+                    FontFamily="Arial Bold"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 1"
+                    Margin="10">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                    <TextBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </TextBox.Effect>
+                </TextBox>
+
+            </Grid>
+            
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="Card Exp. Date"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+                <TextBox
+                    x:Name="UserCardExpDateTxtBx"
+                    Grid.Row="1"
+                    Text="1234567889"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Foreground="Gray"
+                    FontFamily="Arial Bold"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 1"
+                    Margin="10">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                    <TextBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </TextBox.Effect>
+                </TextBox>
+
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Text="Password"
+                    Foreground="DimGray"
+                    FontFamily="Arial Black"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+                <PasswordBox
+                    x:Name="UserCardPasswordBx"
+                    Grid.Row="1"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Foreground="Gray"
+                    FontFamily="Arial Bold"
+                    BorderBrush="LightSeaGreen"
+                    BorderThickness="0, 0, 0, 1"
+                    Margin="10">
+                    
+                    <PasswordBox.Style>
+                        <Style TargetType="{x:Type PasswordBox}">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Style.Resources>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </PasswordBox.Style>
+                    
+                    <PasswordBox.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </PasswordBox.Effect>
+
+                </PasswordBox>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    x:Name="UserPayCancelBtn"
+                    Content="Cancel"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    Margin="30"
+                    Background="#f08080"
+                    BorderBrush="Transparent" Click="UserPayCancelBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+                <Button
+                    Grid.Column="1"
+                    x:Name="UserPayBtn"
+                    Content="Pay"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    Margin="30"
+                    Background="#90ee90"
+                    BorderBrush="Transparent">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1" BlurRadius="15" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>
