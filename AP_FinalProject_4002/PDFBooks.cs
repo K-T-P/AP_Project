@@ -13,11 +13,11 @@ namespace AP_FinalProject_4002
 {
     public enum Type { vip, casual }
     public enum Gender { male, female }
-    class PDFBooks
+    public class PDFBooks
     {
         static public ObservableCollection<PDFBooks> pdfBookList = new ObservableCollection<PDFBooks>();
         static private int ID_Generator = 0;
-        private int _ID { get; set; }
+        public int _ID { get; set; }
         public string Name { get; private set; }
         public string AuthorFirstName { get; private set; }
         public string AuthorLastName { get; private set; }
@@ -86,7 +86,7 @@ namespace AP_FinalProject_4002
                 else
                     d = DateTime.MinValue;
                 long off = long.Parse(reader["off"].ToString());
-                PDFBooks pdfBook = new PDFBooks(ID,name, authorFirstName, authorLastName, authorNationality, authorBirthDay, authorGender, authorBooks, summary, pdf_fileName, photoPath, vip, cost, point, publishYear, outcome, numberOfSoldBooks, monthlySubscriptionFee, off, d);
+                PDFBooks pdfBook = new PDFBooks(ID, name, authorFirstName, authorLastName, authorNationality, authorBirthDay, authorGender, authorBooks, summary, pdf_fileName, photoPath, vip, cost, point, publishYear, outcome, numberOfSoldBooks, monthlySubscriptionFee, off, d);
                 pdfBookList.Add(pdfBook);
             }
             con.Close();
@@ -114,7 +114,7 @@ namespace AP_FinalProject_4002
                     command += ",'" + true + "'";
                 else
                     command += ",'" + false + "'";
-                command += ",'" + pdfBook.AuthorBooks + "','" + pdfBook.AuthorNationality.Trim() + "','" + pdfBook.AuthorLastName.Trim() + "','"+PDFBooks.ID_Generator+"')";
+                command += ",'" + pdfBook.AuthorBooks + "','" + pdfBook.AuthorNationality.Trim() + "','" + pdfBook.AuthorLastName.Trim() + "','" + PDFBooks.ID_Generator + "')";
                 SqlCommand com = new SqlCommand(command, con);
                 com.ExecuteNonQuery();
             }
@@ -141,53 +141,52 @@ namespace AP_FinalProject_4002
         static public void SetVip(int bookID, long monthlySubscriptionFee)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.MonthlySubscriptionFee = monthlySubscriptionFee;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.MonthlySubscriptionFee = monthlySubscriptionFee;
         }
         static public void SetOffDateAndOffCount(int bookID, long off, DateTime dateTime)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                {
-                    pdfBook.Off = off;
-                    pdfBook.OffDate = dateTime;
-                }
+                pdfBook = (PDFBooks)a;
+            }
+            if (pdfBook != null)
+            {
+                pdfBook.Off = off;
+                pdfBook.OffDate = dateTime;
             }
         }
         static public string ViewOutCome(int bookID)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    return "OutCome : " + pdfBook.Outcome.ToString() + "\nNumber Of Sold Books : " + pdfBook.NumberOfSoldBooks;
-                else
-                    return "Entered Book Was Not Found!";
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                return "OutCome : " + pdfBook.Outcome.ToString() + "\nNumber Of Sold Books : " + pdfBook.NumberOfSoldBooks;
             else
-            {
                 return "Entered Book Was Not Found!";
-            }
         }
         static public int ViewPoint(int bookID)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    return pdfBook.Point;
-                else
-                    return -1;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                return pdfBook.Point;
             else
                 return -1;
         }
@@ -207,145 +206,161 @@ namespace AP_FinalProject_4002
         static public void ChangeBookName(int bookID, string newName)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.Name = newName;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.Name = newName;
         }
         static public void ChangeAuthorFirstName(int bookID, string newAuthorFirstName)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.AuthorFirstName = newAuthorFirstName;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.AuthorFirstName = newAuthorFirstName;
         }
         static public void ChangeAuthorLastName(int bookID, string newAuthorLastName)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.AuthorLastName = newAuthorLastName;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.AuthorLastName = newAuthorLastName;
         }
         static public void ChangeAuthorNationality(int bookID, string authorNewNationality)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.AuthorNationality = authorNewNationality;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.AuthorNationality = authorNewNationality;
         }
         static public void ChangeAuthorBirthDay(int bookID, DateTime newBirthDay)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.AuthorBirthDay = newBirthDay;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.AuthorBirthDay = newBirthDay;
         }
         static public void ChangeAuthorGender(int bookID, Gender authorNewGender)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.AuthorGender = authorNewGender;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.AuthorGender = authorNewGender;
         }
         static public void ChangeAuthorBooks(int bookID, string authorNewBooks)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.AuthorBooks = authorNewBooks;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.AuthorBooks = authorNewBooks;
         }
         static public void ChangeSummary(int bookID, string newSummary)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.Summary = newSummary;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.Summary = newSummary;
         }
         static public void ChangePdfFileName(int bookID, string newPdfFileName)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.PDF_FileName = newPdfFileName;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.PDF_FileName = newPdfFileName;
         }
         static public void ChangePhotoName(int bookID, string newPhotoName)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.PhotoPath = newPhotoName;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.PhotoPath = newPhotoName;
         }
         static public void ChangeTypeToFree(int bookID)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                {
-                    pdfBook.bookType = Type.casual;
-                    pdfBook.MonthlySubscriptionFee = 0;
-                }
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+            {
+                pdfBook.bookType = Type.casual;
+                pdfBook.MonthlySubscriptionFee = 0;
+            }
+
         }
         static public void ChangeCost(int bookID, long newCost)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.Cost = newCost;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.Cost = newCost;
+
         }
         static public void ChangePoint(int bookID, int newPoint)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.Point = newPoint;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.Point = newPoint;
         }
         static public void ChangePublishYear(int bookID, int newPublishYear)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
-                    pdfBook.PublishYear = newPublishYear;
+                pdfBook = (PDFBooks)a;
             }
+            if (pdfBook != null)
+                pdfBook.PublishYear = newPublishYear;
         }
         static public void AddBookToGallery(PDFBooks newPDFBook)
         {
@@ -354,19 +369,20 @@ namespace AP_FinalProject_4002
         static public void OpenPDFBook(int bookID)
         {
             var searchResult = pdfBookList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            PDFBooks pdfBook = null;
+            foreach (var a in searchResult)
             {
-                PDFBooks pdfBook = searchResult as PDFBooks;
-                if (pdfBook != null)
+                pdfBook = (PDFBooks)a;
+            }
+            if (pdfBook != null)
+            {
+                string File_Name = pdfBook.PDF_FileName;
+                var process = new System.Diagnostics.Process();
+                process.StartInfo = new System.Diagnostics.ProcessStartInfo(File_Name)
                 {
-                    string File_Name = pdfBook.PDF_FileName;
-                    var process = new System.Diagnostics.Process();
-                    process.StartInfo = new System.Diagnostics.ProcessStartInfo(File_Name)
-                    {
-                        UseShellExecute = true
-                    };
-                    process.Start();
-                }
+                    UseShellExecute = true
+                };
+                process.Start();
             }
         }
         public PDFBooks(

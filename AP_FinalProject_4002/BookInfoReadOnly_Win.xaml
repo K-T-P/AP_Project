@@ -109,7 +109,7 @@
                     <Button
                         Grid.Row="0"
                         x:Name="BuyBookBtn"
-                        Content="Buy - Price"
+                        Content="Price"
                         Background="#ffa7e2df"
                         Foreground="Gray"
                         FontFamily="Arial Black"

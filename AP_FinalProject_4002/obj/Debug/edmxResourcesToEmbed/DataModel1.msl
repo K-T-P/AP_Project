@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UserServerModelStoreContainer" CdmEntityContainer="UserServerEntities">
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="UserServerModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="purchasedAudioBooks" ColumnName="purchasedAudioBooks" />
+          <ScalarProperty Name="purchasedPDFBooks" ColumnName="purchasedPDFBooks" />
+          <ScalarProperty Name="bookmarkedAudioBooks" ColumnName="bookmarkedAudioBooks" />
+          <ScalarProperty Name="bookmarkedPDFBooks" ColumnName="bookmarkedPDFBooks" />
+          <ScalarProperty Name="cartPDFBooks" ColumnName="cartPDFBooks" />
+          <ScalarProperty Name="cartAudioBooks" ColumnName="cartAudioBooks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

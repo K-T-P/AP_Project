@@ -19,7 +19,6 @@ namespace AP_FinalProject_4002
     /// </summary>
     public partial class UserLogin_Win : Window
     {
-        public User user = new User("Farzan", "Mosayyebi", "farzanmosayyebi@gmail.com", "Farzan2000", "09146569637");
         public UserLogin_Win()
         {
             InitializeComponent();

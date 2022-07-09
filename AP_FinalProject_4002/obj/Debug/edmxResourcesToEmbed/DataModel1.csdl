@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" MaxLength="98" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="purchasedAudioBooks" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="purchasedPDFBooks" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="bookmarkedAudioBooks" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="bookmarkedPDFBooks" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cartPDFBooks" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cartAudioBooks" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="UserServerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+  </EntityContainer>
+</Schema>

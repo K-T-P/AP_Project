@@ -13,9 +13,22 @@ namespace AP_FinalProject_4002
 {
     public class User : Person
     {
-        static Dictionary<string, string> users { get; set; } = new Dictionary<string, string>();
+        static public Dictionary<string, string> users { get; set; } = new Dictionary<string, string>();
 
-        static ObservableCollection<User> userGrp { get; set; } = new ObservableCollection<User>();
+        static public ObservableCollection<User> userGrp { get; set; } = new ObservableCollection<User>();
+
+        public ObservableCollection<PDFBooks> purchasedPDFBooks = new ObservableCollection<PDFBooks>();
+
+        public ObservableCollection<PDFBooks> bookmarkedPDFBooks = new ObservableCollection<PDFBooks>();
+
+        public ObservableCollection<PDFBooks> PDFBooksInCart = new ObservableCollection<PDFBooks>();
+
+        public ObservableCollection<AudioBooks> purchasedAudioBooks = new ObservableCollection<AudioBooks>();
+
+        public ObservableCollection<AudioBooks> bookmarkedAudioBooks = new ObservableCollection<AudioBooks>();
+
+        public ObservableCollection<AudioBooks> AudioBooksInCart = new ObservableCollection<AudioBooks>();
+        public long Balance { get; set; }
 
         public User(string fname, string lname, string email, string password, string phone)
         {
@@ -28,13 +41,13 @@ namespace AP_FinalProject_4002
             userGrp.Add(this);
         }
 
-        long Balance { get; set; } = 0;
 
         public static void AutoLoad()
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + AppDomain.CurrentDomain.BaseDirectory.ToString() + @"UserServer\UserServer.mdf;Integrated Security=True;Connect Timeout=30");
             string command = "select * from [UserTable]";
             SqlCommand com = new SqlCommand(command, con);
+            con.Open();
             SqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
@@ -43,7 +56,87 @@ namespace AP_FinalProject_4002
                 string email = reader["email"].ToString();
                 string password = reader["password"].ToString();
                 string phoneNumber = reader["phoneNumber"].ToString();
-                userGrp.Add(new User(fName, lName, email, password, phoneNumber));
+                string[] purchasedAudioBooks = reader["purchasedAudioBooks"].ToString().Split('a');
+                string[] purchaasedPDFBooks = reader["purchasedPDFBooks"].ToString().Split('a');
+                string[] bookmarkedAudioBooks = reader["bookmarkedAudioBooks"].ToString().Split('a');
+                string[] bookmarkedPDFBooks = reader["bookmarkedPDFBooks"].ToString().Split('a');
+                string[] PDFBooksInCart = reader["cartPDFBooks"].ToString().Split('a');
+                string[] AudioBooksInCart = reader["cartAudioBooks"].ToString().Split('a');
+                User newUser = new User(fName, lName, email, password, phoneNumber);
+                userGrp.Add(newUser);
+
+                if (purchasedAudioBooks[0] != "-1")
+                {
+                    foreach (string id in purchasedAudioBooks)
+                    {
+                        AudioBooks audioBook = null;
+                        var a = AudioBooks.AudioBooksList.Where(x => x._ID == int.Parse(id));
+                        foreach (var b in a)
+                            audioBook = b as AudioBooks;
+                        if (audioBook != null)
+                            newUser.purchasedAudioBooks.Add(audioBook);
+                    }
+                }
+                if (purchaasedPDFBooks[0] != "-1")
+                {
+                    foreach (string id in purchaasedPDFBooks)
+                    {
+                        PDFBooks pdfBook = null;
+                        var a = PDFBooks.pdfBookList.Where(x => x._ID == int.Parse(id));
+                        foreach (var b in a)
+                            pdfBook = b as PDFBooks;
+                        if (pdfBook != null)
+                            newUser.purchasedPDFBooks.Add(pdfBook);
+                    }
+                }
+                if (bookmarkedAudioBooks[0] != "-1")
+                {
+                    foreach (string id in bookmarkedAudioBooks)
+                    {
+                        AudioBooks audioBook = null;
+                        var a = AudioBooks.AudioBooksList.Where(x => x._ID == int.Parse(id));
+                        foreach (var b in a)
+                            audioBook = b as AudioBooks;
+                        if (audioBook != null)
+                            newUser.bookmarkedAudioBooks.Add(audioBook);
+                    }
+                }
+                if (bookmarkedPDFBooks[0] != "-1")
+                {
+                    foreach (string id in bookmarkedPDFBooks)
+                    {
+                        PDFBooks pdfBook = null;
+                        var a = PDFBooks.pdfBookList.Where(x => x._ID == int.Parse(id));
+                        foreach (var b in a)
+                            pdfBook = b as PDFBooks;
+                        if (pdfBook != null)
+                            newUser.bookmarkedPDFBooks.Add(pdfBook);
+                    }
+                }
+                if (AudioBooksInCart[0] != "-1")
+                {
+                    foreach (string id in AudioBooksInCart)
+                    {
+                        AudioBooks audioBook = null;
+                        var a = AudioBooks.AudioBooksList.Where(x => x._ID == int.Parse(id));
+                        foreach (var b in a)
+                            audioBook = b as AudioBooks;
+                        if (audioBook != null)
+                            newUser.AudioBooksInCart.Add(audioBook);
+                    }
+                }
+                if (PDFBooksInCart[0] != "-1")
+                {
+                    foreach (string id in PDFBooksInCart)
+                    {
+                        PDFBooks pdfBook = null;
+                        var a = PDFBooks.pdfBookList.Where(x => x._ID == int.Parse(id));
+                        foreach (var b in a)
+                            pdfBook = b as PDFBooks;
+                        if (pdfBook != null)
+                            newUser.PDFBooksInCart.Add(pdfBook);
+                    }
+                }
                 users.Add(email, password);
             }
             con.Close();
@@ -55,7 +148,99 @@ namespace AP_FinalProject_4002
             con.Open();
             foreach (User user in User.userGrp)
             {
-                command = "insert into [UserTable] values('" + user.Email.Trim() + "','" + user.FirstName + "','" + user.LastName + "','" + user.PhoneNum + "','" + user.Password + "')";
+                string purchasedAudioBooksString = "";
+                if (user.purchasedAudioBooks.Count != 0)
+                {
+                    for (int i = 0; i < user.purchasedAudioBooks.Count - 1; i++)
+                    {
+                        if (user.purchasedAudioBooks[i] != null)
+                            purchasedAudioBooksString += (user.purchasedAudioBooks[i]._ID + 'a');
+                    }
+                    purchasedAudioBooksString += user.purchasedAudioBooks[user.purchasedAudioBooks.Count - 1];
+                }
+                else
+                {
+                    purchasedAudioBooksString = "-1";
+                }
+
+                string purchasedPDFBooksString = "";
+                if (user.purchasedPDFBooks.Count != 0)
+                {
+                    for (int i = 0; i < user.purchasedPDFBooks.Count - 1; i++)
+                    {
+                        if (user.purchasedPDFBooks[i] != null)
+                            purchasedPDFBooksString += (user.purchasedPDFBooks[i]._ID + 'a');
+                    }
+                    purchasedPDFBooksString += user.purchasedPDFBooks[user.purchasedPDFBooks.Count - 1];
+                }
+                else
+                {
+                    purchasedPDFBooksString = "-1";
+                }
+
+                string bookmarkedAudioBooksString = "";
+                if (user.bookmarkedAudioBooks.Count != 0)
+                {
+                    for (int i = 0; i < user.bookmarkedAudioBooks.Count - 1; i++)
+                    {
+                        if (user.bookmarkedAudioBooks[i] != null)
+                            bookmarkedAudioBooksString += (user.bookmarkedAudioBooks[i]._ID + 'a');
+                    }
+                    bookmarkedAudioBooksString += user.bookmarkedAudioBooks[user.bookmarkedAudioBooks.Count - 1];
+                }
+                else
+                {
+                    bookmarkedAudioBooksString = "-1";
+                }
+
+                string bookmarkedPDFBooksString = "";
+                if (user.bookmarkedPDFBooks.Count != 0)
+                {
+                    for (int i = 0; i < user.bookmarkedPDFBooks.Count - 1; i++)
+                    {
+                        if (user.bookmarkedPDFBooks[i] != null)
+                            bookmarkedPDFBooksString += (user.bookmarkedPDFBooks[i]._ID + 'a');
+                    }
+                    bookmarkedPDFBooksString += user.bookmarkedPDFBooks[user.bookmarkedPDFBooks.Count - 1];
+                }
+                else
+                {
+                    bookmarkedPDFBooksString = "-1";
+                }
+
+                string PDFBooksInCartString = "";
+                if (user.PDFBooksInCart.Count != 0)
+                {
+                    for (int i = 0; i < user.PDFBooksInCart.Count - 1; i++)
+                    {
+                        if (user.PDFBooksInCart[i] != null)
+                            PDFBooksInCartString += (user.PDFBooksInCart[i]._ID + 'a');
+                    }
+                    PDFBooksInCartString += user.PDFBooksInCart[user.PDFBooksInCart.Count - 1];
+                }
+                else
+                {
+                    PDFBooksInCartString = "-1";
+                }
+
+                string AudioBooksInCartString = "";
+                if (user.AudioBooksInCart.Count != 0)
+                {
+                    for (int i = 0; i < user.AudioBooksInCart.Count - 1; i++)
+                    {
+                        if (user.AudioBooksInCart[i] != null)
+                            AudioBooksInCartString += (user.AudioBooksInCart[i]._ID + 'a');
+                    }
+                    AudioBooksInCartString += user.AudioBooksInCart[user.AudioBooksInCart.Count - 1];
+                }
+                else
+                {
+                    AudioBooksInCartString += "-1";
+                }
+
+                command = "insert into [UserTable] values('" + user.Email.Trim() + "','" + user.FirstName + "','" +
+                    user.LastName + "','" + user.PhoneNum + "','" + user.Password + "','" + purchasedAudioBooksString.Trim() + "','" + purchasedPDFBooksString.Trim() + "'" +
+                    ",'" + bookmarkedAudioBooksString.Trim() + "','" + bookmarkedPDFBooksString.Trim() + "','" + PDFBooksInCartString.Trim() + "','" + AudioBooksInCartString.Trim() + "')";
                 SqlCommand com = new SqlCommand(command, con);
                 com.ExecuteNonQuery();
             }
@@ -65,21 +250,21 @@ namespace AP_FinalProject_4002
         {
             var a = userGrp.Where(x => x.Email == email);
             User user = null;
-            foreach (var instance in a)
-                user = instance;
+            foreach (var varUser in a)
+            {
+                user = (User)varUser;
+            }
             if (user.Password == password)
                 return true;
             else
                 return false;
         }
-
         public static User FindUser(string email)
         {
             var a = userGrp.Where(x => x.Email == email);
             User user = null;
             foreach (var instance in a)
                 user = instance;
-
             return user;
         }
         public static bool SignUp_EmailExistsCheck(string email)
@@ -117,6 +302,16 @@ namespace AP_FinalProject_4002
             else
                 return false;
         }
+        public static bool SignUp_EmailFormatCheck(string email)
+        {
+            string pattern = @"^\w{3,32}\@\w{3,32}\.\w{3,32}$";
+            Regex rx = new Regex(pattern);
+            Match m = rx.Match(email);
+            if (m.Success)
+                return true;
+            else
+                return false;
+        }
         public static bool SignUp_fNameCheck(string fName)
         {
             string pattern = @"^[a-zA-Z]{3,32}$";
@@ -147,6 +342,7 @@ namespace AP_FinalProject_4002
             else
                 return false;
         }
+
         public static bool CVVCheck(string CVV)
         {
             string pattern = @"^\d{3,4}$";

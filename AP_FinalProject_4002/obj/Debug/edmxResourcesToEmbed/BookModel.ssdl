@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PDFBooksTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="400" Nullable="false" />
+    <Property Name="authorName" Type="nchar" MaxLength="400" Nullable="false" />
+    <Property Name="cost" Type="bigint" Nullable="false" />
+    <Property Name="summary" Type="nchar" MaxLength="500" Nullable="false" />
+    <Property Name="point" Type="int" Nullable="false" />
+    <Property Name="bookType" Type="bit" Nullable="false" />
+    <Property Name="off" Type="bigint" Nullable="false" />
+    <Property Name="offTime" Type="datetime2" Precision="7" />
+    <Property Name="photoPath" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="PDF_FileName" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="publishYear" Type="int" Nullable="false" />
+    <Property Name="outcome" Type="bigint" Nullable="false" />
+    <Property Name="numberOfSoldBooks" Type="int" Nullable="false" />
+    <Property Name="monthlySubscriptionFee" Type="bigint" Nullable="false" />
+    <Property Name="authorBirthDay" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="authorGender" Type="bit" Nullable="false" />
+    <Property Name="authorBooks" Type="nchar" MaxLength="500" Nullable="false" />
+    <Property Name="authorNationality" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BookServerModelStoreContainer">
+    <EntitySet Name="PDFBooksTable" EntityType="Self.PDFBooksTable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

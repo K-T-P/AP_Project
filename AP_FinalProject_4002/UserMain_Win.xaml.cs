@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Core.Objects;
 
 namespace AP_FinalProject_4002
 {
@@ -21,6 +22,8 @@ namespace AP_FinalProject_4002
     public partial class UserMain_Win : Window
     {
         public User user { get; set; }
+        UserServerEntities userEntities = new UserServerEntities();
+        BookServerEntities bookEntities = new BookServerEntities();
         public UserMain_Win(User user)
         {
             this.user = user;
@@ -28,29 +31,24 @@ namespace AP_FinalProject_4002
             InitializeComponent();
 
             UserFnameTxt.Text = $"Welcome {user.FirstName}!";
+            UserWalletTxt.Text = user.Balance.ToString();
             DataContext = user;
         }         
-        public UserMain_Win()
-        {
-
-        }
 
 
         private void MainBtn_Click(object sender, RoutedEventArgs e)
         {
-            tabtest.SelectedIndex = 0;
+            tabtest.SelectedItem = MainTb;
         }
 
         private void BookmarksBtn_Click(object sender, RoutedEventArgs e)
         {
-            BookInfoReadOnly_Win book = new BookInfoReadOnly_Win();
-            book.Show();
+            tabtest.SelectedItem = BookmarkTb;
         }
 
         private void MyLibBtn_Click(object sender, RoutedEventArgs e)
         {
             tabtest.SelectedItem = MyLibTb;
-
         }
 
         private void MyProfBtn_Click(object sender, RoutedEventArgs e)
@@ -107,8 +105,8 @@ namespace AP_FinalProject_4002
 
         private void WalletChargeBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserPay_Win newpay = new UserPay_Win();
-            newpay.Show();
+            UserWalletRechargePrice_Win newRecharge = new UserWalletRechargePrice_Win(user);
+            newRecharge.Show();
         }
 
         private void CartBtn_Click(object sender, RoutedEventArgs e)
@@ -120,6 +118,42 @@ namespace AP_FinalProject_4002
         {
             UserChangePass_Win newpass = new UserChangePass_Win();
             newpass.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<PDFBooksTable> AllBooks = new ObservableCollection<PDFBooksTable>();
+            ObservableCollection<string> bookmarks = new ObservableCollection<string>();
+            ObservableCollection<string> library = new ObservableCollection<string>();
+            ObservableCollection<string> cart = new ObservableCollection<string>();
+
+            var pdfbookQuery = from instance in bookEntities.PDFBooksTables
+                            where (true)
+                            select instance;
+            var audiobookQuery = from instance in bookEntities.PDFBooksTables
+                               where (true)
+                               select instance;
+
+            foreach (var instance in pdfbookQuery.ToList())
+            {
+                AllBooks.Add(instance);
+            }
+
+            foreach (var instance in audiobookQuery.ToList())
+            {
+                AllBooks.Add(instance);
+            }
+            
+            AllBooksGrid.ItemsSource = AllBooks;
+
+            PDFBookmarksGrid.ItemsSource = user.bookmarkedPDFBooks;
+            AUdioBookmarksGrid.ItemsSource = user.bookmarkedAudioBooks;
+
+            PDFBookLibGrid.ItemsSource = user.purchasedPDFBooks;
+            AUdioBookLibGrid.ItemsSource = user.purchasedAudioBooks;
+
+            PDFBookCartGrid.ItemsSource = user.PDFBooksInCart;
+            AudioBookCartGrid.ItemsSource = user.AudioBooksInCart;
         }
     }
 }

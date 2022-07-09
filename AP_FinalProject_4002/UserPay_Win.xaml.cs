@@ -19,14 +19,35 @@ namespace AP_FinalProject_4002
     /// </summary>
     public partial class UserPay_Win : Window
     {
-        public UserPay_Win()
+        public User user { get; set; }
+        public long price { get; set; }
+        public UserPay_Win(User user, long price)
         {
+            this.user = user;
+            this.price = price;
             InitializeComponent();
+            PayPriceTxt.Text = $"{price}";
         }
 
         private void UserPayCancelBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void UserPayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string[] ExpDate = UserCardExpDateTxtBx.Text.Split(' ');
+            if (User.CardNumber_Check(UserCardNmbrTxtBx.Text)
+                && User.CardExpirationDate_Check(ExpDate[0], ExpDate[2])
+                && User.CVVCheck(UserCardCVVTxtBx.Text)
+                && UserCardPasswordBx.Password.ToString() == user.Password)
+            {
+                user.Balance += price;
+                MessageBox.Show("Operation Successfull!");
+                this.Close();
+            }
+            else
+                MessageBox.Show("Invalid Input!");
         }
     }
 }

@@ -76,7 +76,6 @@ namespace AP_FinalProject_4002
             Admin admin = null;
             foreach (var instance in a)
                 admin = instance;
-
             return admin;
         }
 
@@ -161,6 +160,7 @@ namespace AP_FinalProject_4002
             this.Email = email;
             this.PhoneNum = phoneNumber;
             this.Password = password;
+            adminGrp.Add(this);
         }
     }
 }

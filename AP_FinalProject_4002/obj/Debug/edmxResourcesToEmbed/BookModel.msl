@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BookServerModelStoreContainer" CdmEntityContainer="BookServerEntities">
+    <EntitySetMapping Name="PDFBooksTables">
+      <EntityTypeMapping TypeName="BookServerModel.PDFBooksTable">
+        <MappingFragment StoreEntitySet="PDFBooksTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="authorName" ColumnName="authorName" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="point" ColumnName="point" />
+          <ScalarProperty Name="bookType" ColumnName="bookType" />
+          <ScalarProperty Name="off" ColumnName="off" />
+          <ScalarProperty Name="offTime" ColumnName="offTime" />
+          <ScalarProperty Name="photoPath" ColumnName="photoPath" />
+          <ScalarProperty Name="PDF_FileName" ColumnName="PDF_FileName" />
+          <ScalarProperty Name="publishYear" ColumnName="publishYear" />
+          <ScalarProperty Name="outcome" ColumnName="outcome" />
+          <ScalarProperty Name="numberOfSoldBooks" ColumnName="numberOfSoldBooks" />
+          <ScalarProperty Name="monthlySubscriptionFee" ColumnName="monthlySubscriptionFee" />
+          <ScalarProperty Name="authorBirthDay" ColumnName="authorBirthDay" />
+          <ScalarProperty Name="authorGender" ColumnName="authorGender" />
+          <ScalarProperty Name="authorBooks" ColumnName="authorBooks" />
+          <ScalarProperty Name="authorNationality" ColumnName="authorNationality" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

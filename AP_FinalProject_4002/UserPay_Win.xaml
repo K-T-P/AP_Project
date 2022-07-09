@@ -39,7 +39,7 @@
                 <TextBox
                     x:Name="UserCardNmbrTxtBx"
                     Grid.Row="1"
-                    Text="1234567889"
+                    Text=""
                     VerticalContentAlignment="Center"
                     HorizontalContentAlignment="Center"
                     Foreground="Gray"
@@ -73,7 +73,7 @@
                 <TextBox
                     x:Name="UserCardCVVTxtBx"
                     Grid.Row="1"
-                    Text="1234567889"
+                    Text=""
                     VerticalContentAlignment="Center"
                     HorizontalContentAlignment="Center"
                     Foreground="Gray"
@@ -108,7 +108,7 @@
                 <TextBox
                     x:Name="UserCardExpDateTxtBx"
                     Grid.Row="1"
-                    Text="1234567889"
+                    Text=""
                     VerticalContentAlignment="Center"
                     HorizontalContentAlignment="Center"
                     Foreground="Gray"
@@ -176,6 +176,16 @@
                 </PasswordBox>
             </Grid>
 
+            <TextBlock
+                x:Name="PayPriceTxt"
+                Text="[Price]"
+                Grid.Row="4"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Margin="5"
+                Foreground="Green"
+                FontFamily="Arial Black"/>
+
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -207,7 +217,8 @@
                     FontFamily="Arial Black"
                     Margin="30"
                     Background="#90ee90"
-                    BorderBrush="Transparent">
+                    BorderBrush="Transparent"
+                    Click="UserPayBtn_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>

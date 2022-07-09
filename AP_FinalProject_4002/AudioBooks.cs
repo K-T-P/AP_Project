@@ -11,12 +11,12 @@ using System.IO;
 
 namespace AP_FinalProject_4002
 {
-    class AudioBooks
+    public class AudioBooks
     {
         static public ObservableCollection<AudioBooks> AudioBooksList = new ObservableCollection<AudioBooks>();
         static private int ID_Generator = 0;
 
-        private int _ID { get; set; }
+        public int _ID { get; set; }
         public string Name { get; private set; }
         public string AuthorFirstName { get; private set; }
         public string AuthorLastName { get; private set; }
@@ -113,7 +113,7 @@ namespace AP_FinalProject_4002
                     command += ",'" + true + "'";
                 else
                     command += ",'" + false + "'";
-                command += ",'" + audioBook.AuthorBooks + "','" + audioBook.AuthorNationality + "','" + audioBook.AuthorLastName.Trim() + "','"+AudioBooks.ID_Generator+"')";
+                command += ",'" + audioBook.AuthorBooks + "','" + audioBook.AuthorNationality + "','" + audioBook.AuthorLastName.Trim() + "','" + AudioBooks.ID_Generator + "')";
                 SqlCommand com = new SqlCommand(command, con);
                 com.ExecuteNonQuery();
             }
@@ -140,58 +140,54 @@ namespace AP_FinalProject_4002
         static public void SetVip(int bookID, long monthlySubscriptionFee)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
-                    audioBook.MonthlySubscriptionFee = monthlySubscriptionFee;
+                audioBook = (AudioBooks)i;
             }
+            if (audioBook != null)
+                audioBook.MonthlySubscriptionFee = monthlySubscriptionFee;
         }
         static public void SetOffDateAndOffCount(int bookID, long off, DateTime dateTime)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
             AudioBooks audioBook = null;
-            if (searchResult.Count() == 1)
+            foreach (var i in searchResult)
             {
-                audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
-                {
-                    audioBook.Off = off;
-                    audioBook.OffDate = dateTime;
-                }
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
+            {
+                audioBook.Off = off;
+                audioBook.OffDate = dateTime;
             }
         }
         static public string ViewOutCome(int bookID)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
-                    return "OutCome : " + audioBook.Outcome.ToString() + "\nNumber Of Sold Books : " + audioBook.NumberOfSoldBooks;
-                else
-                    return "Entered Book Was Not Found!";
+                audioBook = (AudioBooks)i;
             }
+            if (audioBook != null)
+                return "OutCome : " + audioBook.Outcome.ToString() + "\nNumber Of Sold Books : " + audioBook.NumberOfSoldBooks;
             else
-            {
                 return "Entered Book Was Not Found!";
-            }
+
         }
         static public int ViewPoint(int bookID)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
-                    return audioBook.Point;
-                else
-                    return -1;
+                audioBook = (AudioBooks)i;
             }
+            if (audioBook != null)
+                return audioBook.Point;
             else
-            {
                 return -1;
-            }
         }
         static public void UpdateOffDates()
         {
@@ -209,154 +205,168 @@ namespace AP_FinalProject_4002
         static public void ChangeBookName(int bookID, string newName)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
-                    audioBook.Name = newName;
+                audioBook = (AudioBooks)i;
             }
+            if (audioBook != null)
+                audioBook.Name = newName;
         }
         static public void ChangeAuthorFirstName(int bookID, string newAuthorFirstName)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.AuthorFirstName = newAuthorFirstName;
             }
-        }
         static public void ChangeAuthorLastName(int bookID, string newAuthorLastName)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.AuthorLastName = newAuthorLastName;
             }
-        }
         static public void ChangeAuthorNationality(int bookID, string authorNewNationality)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.AuthorNationality = authorNewNationality;
             }
-        }
         static public void ChangeAuthorBirthDay(int bookID, DateTime newBirthDay)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.AuthorBirthDay = newBirthDay;
             }
-        }
         static public void ChangeAuthorGender(int bookID, Gender authorNewGender)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.AuthorGender = authorNewGender;
             }
-        }
         static public void ChangeAuthorBooks(int bookID, string authorNewBooks)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.AuthorBooks = authorNewBooks;
             }
-        }
         static public void ChangeSummary(int bookID, string newSummary)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.Summary = newSummary;
             }
-        }
         static public void ChangeAudioFileName(int bookID, string newAudioFileName)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                 {
                     string fileExistencePath = AppDomain.CurrentDomain.BaseDirectory + @"AudioBookMP3Files\" + newAudioFileName;
                     if (File.Exists(fileExistencePath))
                         audioBook.MP3_FileName = newAudioFileName;
                 }
             }
-        }
         static public void ChangePhotoPath(int bookID, string newPhotoPath)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                 {
                     string fileExistencePath = AppDomain.CurrentDomain.BaseDirectory + @"Pictures\" + newPhotoPath;
                     if (File.Exists(fileExistencePath))
                         audioBook.PhotoPath = newPhotoPath;
                 }
             }
-        }
         static public void ChangeTypeToFree(int bookID)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                 {
                     audioBook.bookType = Type.casual;
                     audioBook.MonthlySubscriptionFee = 0;
                 }
             }
-        }
         static public void ChangeCost(int bookID, long newCost)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.Cost = newCost;
             }
-        }
         static public void ChangePoint(int bookID, int newPoint)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.Point = newPoint;
             }
-        }
         static public void ChangePublishYear(int bookID, int newPublishYear)
         {
             var searchResult = AudioBooksList.Where(book => book._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                     audioBook.PublishYear = newPublishYear;
             }
-        }
         static public void AddBookToGallery(AudioBooks newAudioBook)
         {
             AudioBooks.AudioBooksList.Add(newAudioBook);
@@ -364,16 +374,17 @@ namespace AP_FinalProject_4002
         static public void PlayBook(int bookID)
         {
             var searchResult = AudioBooksList.Where(aBook => aBook._ID == bookID);
-            if (searchResult.Count() == 1)
+            AudioBooks audioBook = null;
+            foreach (var i in searchResult)
             {
-                AudioBooks audioBook = searchResult as AudioBooks;
-                if (audioBook != null)
+                audioBook = (AudioBooks)i;
+            }
+            if (audioBook != null)
                 {
                     AudioBookPlayer mp3Player = new AudioBookPlayer(audioBook.MP3_FileName);
                     mp3Player.Show();
                 }
             }
-        }
         public AudioBooks(
             string name,
             string authorFirstName,

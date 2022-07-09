@@ -19,8 +19,10 @@ namespace AP_FinalProject_4002
     /// </summary>
     public partial class BookInfoReadOnly_Win : Window
     {
-        public BookInfoReadOnly_Win()
+        User user { get; set; }
+        public BookInfoReadOnly_Win(User user)
         {
+            this.user = user;
             InitializeComponent();
         }
 
@@ -31,7 +33,7 @@ namespace AP_FinalProject_4002
 
         private void BuyBookBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserPay_Win pay = new UserPay_Win();
+            UserPay_Win pay = new UserPay_Win(user, long.Parse(BuyBookBtn.Content.ToString()));
             pay.Show();
 
         }
